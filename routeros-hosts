@@ -1,3 +1,21 @@
+# date: 2025年 12月 29日 星期一 22:22:58 CST
+#  url: https://github.com/vim1024/ad-lists
+# -----------------------------------------
+127.0.0.1  localhost
+127.0.0.1  localhost.localdomain
+127.0.0.1  local
+255.255.255.255  broadcasthost
+::1  localhost
+::1  ip6-localhost
+::1  ip6-loopback
+fe80::1%lo0  localhost
+ff00::0  ip6-localnet
+ff00::0  ip6-mcastprefix
+ff02::1  ip6-allnodes
+ff02::2  ip6-allrouters
+ff02::3  ip6-allhosts
+0.0.0.0  0.0.0.0
+# -----------------------------------------
 0.0.0.0  000dn.com
 0.0.0.0  kwcdn.000dn.com
 0.0.0.0  kwcscdn.000dn.com
