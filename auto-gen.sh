@@ -50,3 +50,12 @@ while IFS= read -r line; do
 	echo "0.0.0.0  $line" >> $HOSTS2_ROS
 done < adblock.hosts
 
+
+
+
+
+
+# last clean template file
+git clean -dfx
+
+
