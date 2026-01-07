@@ -4,11 +4,8 @@
 echo "download the ad domains"
 curl -s -o domains.txt https://anti-ad.net/domains.txt
 
-
 HOSTS_ROS=routeros-hosts
-
 rm -rf routeros-hosts
-
 echo "# date: $(date)" >> $HOSTS_ROS
 echo "#  url: https://github.com/vim1024/ad-lists" >> $HOSTS_ROS
 echo "# -----------------------------------------" >> $HOSTS_ROS
@@ -28,7 +25,6 @@ echo "ff02::3  ip6-allhosts" >> $HOSTS_ROS
 echo "0.0.0.0  0.0.0.0" >> $HOSTS_ROS
 echo "# -----------------------------------------" >> $HOSTS_ROS
 
-
 while IFS= read -r line; do
     if [[ "$line" =~ ^[[:space:]]*# ]]; then
         continue
@@ -36,4 +32,21 @@ while IFS= read -r line; do
     echo "0.0.0.0  $line" >> $HOSTS_ROS
 done < domains.txt
 
+
+echo
+echo "----- part 2 -----"
+echo "webside: https://sspai.com/post/58183"
+echo
+
+curl -s -L \
+	https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt \
+	https://easylist-downloads.adblockplus.org/malwaredomains_full.txt \
+	https://easylist-downloads.adblockplus.org/fanboy-social.txt > adblock.unsorted
+sort -u adblock.unsorted | grep ^\|\|.*\^$ | grep -v \/ > adblock.sorted
+sed 's/[\|^]//g' < adblock.sorted > adblock.hosts
+
+HOSTS2_ROS=2-routeros-hosts
+while IFS= read -r line; do
+	echo "0.0.0.0  $line" >> $HOSTS2_ROS
+done < adblock.hosts
 
